@@ -29,6 +29,17 @@ img {
   background-color: #4bb155 !important;
   width: 80%;
 }
+.btn {
+  background-color: #4bb155 !important;
+  margin-top: 20px !important;
+}
+.hero_banner {
+  background-image: url("./assets/banner.png");
+  background-position: left;
+  background-size: cover;
+  height: 80vh;
+  color: #fff !important;
+}
 
 /* Mobile responsive */
 @media (max-width: 667px) {
