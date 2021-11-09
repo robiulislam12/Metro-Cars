@@ -2,9 +2,14 @@ import { Box, Button, Container, Grid, TextField, Typography } from '@mui/materi
 import React from 'react';
 import { Link } from 'react-router-dom';
 import RegisterImg from '../../assets/welcome.svg';
+import Footer from '../Footer';
+import Header from '../Header';
 
 export default function Register() {
     return (
+        <>
+        <Header/>
+        
         <Box sx={{my: 10}}>
             <Container>
                 <Grid container spacing={4} className="pt-8">
@@ -73,5 +78,7 @@ export default function Register() {
                 </Grid>
             </Container>
         </Box>
+        <Footer/>
+        </>
     )
 }

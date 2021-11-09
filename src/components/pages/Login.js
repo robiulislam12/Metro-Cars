@@ -1,10 +1,20 @@
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import LoginImg from '../../assets/welcome.svg';
+import useAuth from '../../hooks/useAuth';
+import Footer from '../Footer';
+import Header from '../Header';
 
 export default function Login() {
+
+    const {signInUsingGoogle} = useAuth();
+    const history = useHistory();
+    const location = useLocation()
     return (
+        <>
+        <Header/>
+
         <Box sx={{my: 10}}>
             <Container>
                 <Grid container spacing={4} className="pt-8">
@@ -36,7 +46,7 @@ export default function Login() {
                                 </Link>
                             </p>
                         </form>
-                        <Button variant='contained'>Google Sign In</Button>
+                        <Button variant='contained' onClick={() => signInUsingGoogle(location, history)}>Google Sign In</Button>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <Box>
@@ -46,5 +56,8 @@ export default function Login() {
                 </Grid>
             </Container>
         </Box>
+
+        <Footer/>
+    </>
     )
 }

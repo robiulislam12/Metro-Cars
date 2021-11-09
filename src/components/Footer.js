@@ -10,7 +10,7 @@ export default function Footer() {
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box>
                     <Link to='/'>
-                            <img style={{width: '200px'}} src={logo} alt="" className="logo" />
+                            <img style={{width: '200px'}} src={logo} alt="" className="footer_logo" />
                         </Link>
                     </Box>
                     <Box>
