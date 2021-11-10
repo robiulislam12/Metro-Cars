@@ -6,10 +6,12 @@ import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
 import AdminRoute from '../../AdminRoute';
 import AddACar from './AddACar';
+import DashboardHome from './DashboardHome';
 import MakeAAdmin from './MakeAAdmin';
 import ManageAllOrders from './ManageAllOrders';
 import MyOrders from './MyOrders';
 import PayNow from './PayNow';
+import Review from './Review';
 
 
 const drawerWidth = 200;
@@ -35,7 +37,7 @@ export default function DashBoard(props) {
         <Toolbar />
         <List>
           
-          { !admin && <> <Link to={`${url}`}>
+          { !admin && <> <Link to={`${url}/orders`}>
             <ListItem button ><span style={{color:'white'}}>My Orders</span>
             </ListItem>
           </Link>
@@ -52,7 +54,7 @@ export default function DashBoard(props) {
             
 
           {
-             admin &&  <><Link to={`${url}/orders`}>
+             admin &&  <><Link to={`${url}/manege-orders`}>
             <ListItem button >
                 <span style={{color:'white'}}>Manage All Orders</span>
             </ListItem>
@@ -156,12 +158,21 @@ export default function DashBoard(props) {
           
           <Switch>
             <Route exact path={path}>
+                <DashboardHome/>
+            </Route>
+            <Route exact path={`${path}/orders`}>
                 <MyOrders/>
             </Route>
             <Route path={`${path}/payment`}>
                 <PayNow/>
             </Route>
-            <AdminRoute path={`${path}/orders`}>  
+            <Route path={`${path}/review`}>
+                <Review/>
+            </Route>
+            <Route path={`${path}/payment`}>
+                <PayNow/>
+            </Route>
+            <AdminRoute path={`${path}/manege-orders`}>  
               <ManageAllOrders/>
             </AdminRoute>
             <AdminRoute path={`${path}/add-car`}>  <AddACar/></AdminRoute>

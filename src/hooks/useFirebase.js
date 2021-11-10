@@ -144,7 +144,7 @@ export default function useFirebase(){
         const user ={name, email};
         axios.put('https://metro-car.herokuapp.com/user', user)
         .then(res =>{
-            console.log(res.data)
+            // console.log(res.data)
         })
     }
 

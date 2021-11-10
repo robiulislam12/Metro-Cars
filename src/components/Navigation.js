@@ -26,6 +26,10 @@ export default function Navigation() {
                         <img style={{width: '200px'}} src={logo} alt="" className="logo" />
                     </Link>
                 </Box>
+                <Box>
+                <Link to='/home'><span style={{color: '#000000', marginRight:'15px'}}>Home</span></Link>
+                <Link to='/cars'><span style={{color: '#000000', marginRight:'15px'}}>Explore</span></Link>
+                </Box>
                 {
                     user?.email ? (
                     <>

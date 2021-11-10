@@ -33,8 +33,8 @@ export default function Explore() {
                     }
                     <Grid container spacing={3} my={5}>
                         {
-                            cars.map(car => <Grid item xs={12} md={4}>
-                                <Car key={car._id} car={car}/>
+                            cars.map(car => <Grid key={car._id} item xs={12} md={4}>
+                                <Car  car={car}/>
                             </Grid>)
                         }
                     </Grid>
