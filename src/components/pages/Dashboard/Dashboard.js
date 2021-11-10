@@ -1,10 +1,15 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Box, CssBaseline, Drawer, IconButton, List, ListItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, CssBaseline, Drawer, IconButton, List, ListItem, Toolbar, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
+import AdminRoute from '../../AdminRoute';
 import AddACar from './AddACar';
+import MakeAAdmin from './MakeAAdmin';
+import ManageAllOrders from './ManageAllOrders';
+import MyOrders from './MyOrders';
+import PayNow from './PayNow';
 
 
 const drawerWidth = 200;
@@ -18,7 +23,7 @@ export default function DashBoard(props) {
     let { path, url } = useRouteMatch();
 
     //Admin
-    const {admin} = useAuth()
+    const {admin, logOut} = useAuth()
 
   
     const handleDrawerToggle = () => {
@@ -47,7 +52,7 @@ export default function DashBoard(props) {
             
 
           {
-             /* admin && */ <><Link to={`${url}/orders`}>
+             admin &&  <><Link to={`${url}/orders`}>
             <ListItem button >
                 <span style={{color:'white'}}>Manage All Orders</span>
             </ListItem>
@@ -69,12 +74,12 @@ export default function DashBoard(props) {
             </Link>
             </>
           }
-          <ListItem button ><span style={{color:'white'}}>Log Out</span></ListItem>
+          <ListItem button >
+            <Button variant='contained' onClick={logOut}>Log Out</Button>
+          </ListItem>
           <ListItem button >
             <Link to='/home'>
-                <span style={{color:'white'}}>
-                Go to Home
-                </span>
+                <Button variant='contained' color='error'>Go to Home</Button>
             </Link>
           </ListItem>
           
@@ -150,8 +155,17 @@ export default function DashBoard(props) {
        {/* Declare the react router for nesting */}
           
           <Switch>
-            <Route exact path={`${path}/add-car`}>  <AddACar/></Route>
-            
+            <Route exact path={path}>
+                <MyOrders/>
+            </Route>
+            <Route path={`${path}/payment`}>
+                <PayNow/>
+            </Route>
+            <AdminRoute path={`${path}/orders`}>  
+              <ManageAllOrders/>
+            </AdminRoute>
+            <AdminRoute path={`${path}/add-car`}>  <AddACar/></AdminRoute>
+            <AdminRoute path={`${path}/make-admin`}>  <MakeAAdmin/></AdminRoute>
           </Switch> 
 
        {/* Declare the react router for nesting */}

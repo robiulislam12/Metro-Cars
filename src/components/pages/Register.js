@@ -20,12 +20,12 @@ export default function Register() {
         setUser(newUser);
     }
     const handleSubmit = e =>{
-        const {name, email, password, confirm_password} = user;
+        const {name, email, password, confirm_password, phone} = user;
         if(password !== confirm_password){
             alert('password did not match!')
         }
         else{
-            register(email, password, name, history, location)
+            register(email, password, name, phone, history, location)
         }
 
 

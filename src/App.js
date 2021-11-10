@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BuyNow from "./components/BuyNow";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Explore from "./components/pages/Explore/Explore";
 import Home from "./components/pages/Home/Home";
@@ -18,6 +19,9 @@ export default function App() {
         <Route path='/cars' component={Explore}/>
         <Route path='/login' component={Login}/>
         <Route path='/register' component={Register}/>
+        <PrivateRoute path='/car/:id'>
+          <BuyNow/>
+        </PrivateRoute>
         <PrivateRoute path='/dashboard' >
           <Dashboard></Dashboard>
         </PrivateRoute>

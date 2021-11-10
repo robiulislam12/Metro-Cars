@@ -1,9 +1,11 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Car({car}) {
-    const {car_name, car_img, car_description, car_price} = car;
-    const shortDes = car_description.slice(0, 120) + '[...]'
+    const { _id ,car_name, car_img, car_description, car_price} = car;
+    const shortDes = car_description.slice(0, 120) + '[...]';
+
     return (
         <div>
             
@@ -26,7 +28,9 @@ export default function Car({car}) {
                     </Typography>
                 </CardContent>
                 <CardActions>
+                    <Link to={`/car/${_id}`}>
                     <Button size="small" color='error' variant='contained'>Buy Now</Button>
+                    </Link>
                 </CardActions>
                 </Card>
         </div>
