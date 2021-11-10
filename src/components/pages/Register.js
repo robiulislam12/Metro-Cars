@@ -1,11 +1,37 @@
 import { Box, Button, Container, Grid, TextField, Typography } from '@mui/material';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import RegisterImg from '../../assets/welcome.svg';
+import useAuth from '../../hooks/useAuth';
 import Footer from '../Footer';
 import Header from '../Header';
 
 export default function Register() {
+    const [user, setUser] = useState({});
+    const history = useHistory();
+    const location = useLocation()
+    const {register} = useAuth()
+
+    const handleBlurChange = e =>{
+        const field = e.target.name;
+        const value = e.target.value;
+        const newUser = {...user};
+        newUser[field] = value;
+        setUser(newUser);
+    }
+    const handleSubmit = e =>{
+        const {name, email, password, confirm_password} = user;
+        if(password !== confirm_password){
+            alert('password did not match!')
+        }
+        else{
+            register(email, password, name, history, location)
+        }
+
+
+        
+        e.preventDefault();
+    }
     return (
         <>
         <Header/>
@@ -15,14 +41,16 @@ export default function Register() {
                 <Grid container spacing={4} className="pt-8">
                     <Grid align='center' item xs={12} md={6} sx={{backgroundColor: '#fff', p:4, borderRadius: '5px'}}>
                         <Typography variant="h4">Register</Typography>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <TextField 
                             type='text'
                             name='name'
                             id="standard-basic" 
                             label="Full Name" 
                             sx={{width: '80%'}}
-                            variant="standard" />
+                            variant="standard" 
+                            onBlur={handleBlurChange}
+                            />
                             <br/>
                             <br/>
                             <TextField 
@@ -31,7 +59,9 @@ export default function Register() {
                             id="standard-basic" 
                             label="Email" 
                             sx={{width: '80%'}}
-                            variant="standard" />
+                            variant="standard" 
+                            onBlur={handleBlurChange}
+                            />
                             <br/>
                             <br/>
                             <TextField 
@@ -40,7 +70,8 @@ export default function Register() {
                             name='phone'
                             id="standard-basic" 
                             label="Phone Number" 
-                            variant="standard" />
+                            variant="standard"
+                            onBlur={handleBlurChange} />
                             <br/>
                             <br/>
                             <TextField 
@@ -49,7 +80,8 @@ export default function Register() {
                             name='password'
                             id="standard-basic" 
                             label="Password" 
-                            variant="standard" />
+                            variant="standard"
+                            onBlur={handleBlurChange} />
                             <br/>
                             <br/>
                             <TextField 
@@ -58,7 +90,8 @@ export default function Register() {
                             name='confirm_password'
                             id="standard-basic" 
                             label="Re-type Password" 
-                            variant="standard" />
+                            variant="standard" 
+                            onBlur={handleBlurChange}/>
                             <br/>
                             <br/>
                             <Button type='submit' variant='contained' className='btn_bg' size='large'>Create My Account</Button>

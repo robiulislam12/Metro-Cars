@@ -2,8 +2,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, CssBaseline, Drawer, IconButton, List, ListItem, Toolbar, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
+import AddACar from './AddACar';
 
 
 const drawerWidth = 200;
@@ -46,14 +47,14 @@ export default function DashBoard(props) {
             
 
           {
-             admin && <><Link to={`${url}/orders`}>
+             /* admin && */ <><Link to={`${url}/orders`}>
             <ListItem button >
                 <span style={{color:'white'}}>Manage All Orders</span>
             </ListItem>
           </Link>
-          <Link to={`${url}/add-products`}>
+          <Link to={`${url}/add-car`}>
             <ListItem button >
-            <span style={{color:'white'}}>Add A Product</span>
+            <span style={{color:'white'}}>Add A Car</span>
             </ListItem>
           </Link>
           <Link to={`${url}/make-admin`}>
@@ -148,14 +149,10 @@ export default function DashBoard(props) {
        
        {/* Declare the react router for nesting */}
           
-         {/*  <Switch>
-            <Route exact path={path}>  <DashboardHome/>
-            </Route>
-            <AdminRoute path={`${path}/makeAdmin`}>  <MakeAdmin/>
-            </AdminRoute>
-            <AdminRoute path={`${path}/addDoctor`}>  <AddDoctor/>
-            </AdminRoute>
-          </Switch> */}
+          <Switch>
+            <Route exact path={`${path}/add-car`}>  <AddACar/></Route>
+            
+          </Switch> 
 
        {/* Declare the react router for nesting */}
       </Box>
