@@ -30,7 +30,7 @@ export default function Review() {
             ...reviews
         }
 
-        axios.post('http://localhost:5000/review', review)
+        axios.post('https://metro-car.herokuapp.com/review', review)
         .then(res =>{
             if(res.data.insertedId){
                 alert('review added successfully')

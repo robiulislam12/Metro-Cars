@@ -7,7 +7,7 @@ export default function Review() {
     const [reviews, setReviews] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/reviews')
+        axios.get('https://metro-car.herokuapp.com/reviews')
         .then(res => {
             setReviews(res.data)
         })
