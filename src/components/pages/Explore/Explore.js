@@ -11,7 +11,7 @@ export default function Explore() {
     const [cars, setCars] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/cars')
+        axios.get('https://metro-car.herokuapp.com/cars')
         .then(res=> {
             setCars(res.data)
         })

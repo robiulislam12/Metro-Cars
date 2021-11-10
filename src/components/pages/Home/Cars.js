@@ -9,7 +9,7 @@ export default function Cars() {
     const history = useHistory()
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/cars6')
+        axios.get('https://metro-car.herokuapp.com/cars6')
         .then(res=> {
             setCars(res.data)
         })

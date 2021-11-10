@@ -20,7 +20,7 @@ export default function AddACar() {
 
         const newCar = {...car}
         
-        axios.post('http://localhost:5000/cars', newCar)
+        axios.post('https://metro-car.herokuapp.com/cars', newCar)
         .then(res => {
             if(res.data.insertedId){
                 setSuccess(true)
