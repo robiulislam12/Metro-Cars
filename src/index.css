@@ -44,6 +44,9 @@ img {
   height: 80vh;
   color: #fff !important;
 }
+.icon {
+  width: 20px;
+}
 
 /* Mobile responsive */
 @media (max-width: 667px) {

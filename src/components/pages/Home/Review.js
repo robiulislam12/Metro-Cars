@@ -1,6 +1,9 @@
 import { Box, Container, Grid, Paper, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Rating from 'react-rating';
+import EmptyStar from '../../../assets/empty-star.png';
+import Star from '../../../assets/star.png';
 
 
 export default function Review() {
@@ -21,9 +24,15 @@ export default function Review() {
                     {
                         reviews.map(review => <Grid key={review._id} item xs={12} md={4}>
                             <Paper evolution='1' align='center' sx={{p: 4}}>
-                            <Typography paragraph >Ratings: <span style={{color:'#4BB155', fontWeight:'700', fontSize:'24px'}}>{review?.ratings}/5</span></Typography>
-                                <Typography paragraph>{review?.description}</Typography>
-                                <img src={review?.avatar} alt="" style={{width:'35px', height:'35px', borderRadius:"50%" }}/>
+                                <img src={review?.avatar} alt="" style={{width:'100px', height:'100px', borderRadius:"50%" }}/>
+                                <Typography paragraph my={1}>{review?.description}</Typography>
+                                <Rating
+                                    initialRating={review?.ratings}
+                                    emptySymbol={<img src={EmptyStar} alt='' className="icon" />}
+                                    fullSymbol={<img src={Star} alt='' className="icon" />}
+                                    readonly
+                                    style={{marginBottom: '15px'}}
+                                />
                                 <Typography paragraph>{review?.name}</Typography>
                             </Paper>
                         </Grid>)

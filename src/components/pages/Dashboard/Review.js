@@ -1,10 +1,14 @@
 import { Box, Button, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
+import Rating from 'react-rating';
+import EmptyStar from '../../../assets/empty-star.png';
+import Star from '../../../assets/star.png';
 import useAuth from '../../../hooks/useAuth';
 
 export default function Review() {
 
+    const [rate, setRate] = useState(0)
     const [reviews , setReviews] = useState({})
     const {user} = useAuth();
     
@@ -27,6 +31,7 @@ export default function Review() {
         const review ={
             name: user?.displayName,
             avatar: imgUrl,
+            ratings: rate,
             ...reviews
         }
 
@@ -36,7 +41,6 @@ export default function Review() {
                 alert('review added successfully')
             }
         })
-        
         e.preventDefault()
     }
 
@@ -45,13 +49,11 @@ export default function Review() {
             <Typography variant='h4'>Add a Review</Typography>
             <Box mt={3}>
                 <form onSubmit={handleSubmit}>
-                    <TextField 
-                    type='number'
-                    name='ratings'
-                    label="Please Give a ratings(1 to 5)" 
-                    sx={{width: '50%'}}
-                    variant="outlined" 
-                    onBlur={handleBlurChange}
+                    <Rating
+                        onChange={rate => setRate(rate)}
+                        fractions={2}
+                        emptySymbol={<img src={EmptyStar} alt='' style={{width:'30px'}}/>}
+                        fullSymbol={<img src={Star} alt='' style={{width:'30px'}}/>}
                     />
                     <br/>
                     <br/>

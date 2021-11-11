@@ -26,6 +26,7 @@ export default function MangeProducts() {
         if(id){
             const isAgree =  prompt('Are you sure? Type "yes"')
             if(isAgree === 'yes'){
+                /* axios.delete(`https://metro-car.herokuapp.com/car/${id}`) */
                 axios.delete(`https://metro-car.herokuapp.com/car/${id}`)
                 .then(res => {
                     if(res.data.deletedCount > 0){

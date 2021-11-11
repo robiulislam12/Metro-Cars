@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
-import AdminRoute from '../../AdminRoute';
 import AddACar from './AddACar';
 import DashboardHome from './DashboardHome';
 import MakeAAdmin from './MakeAAdmin';
@@ -173,12 +172,18 @@ export default function DashBoard(props) {
             <Route path={`${path}/payment`}>
                 <PayNow/>
             </Route>
-            <AdminRoute path={`${path}/manege-orders`}>  
-              <ManageAllOrders/>
-            </AdminRoute>
-            <AdminRoute path={`${path}/add-car`}>  <AddACar/></AdminRoute>
-            <AdminRoute path={`${path}/make-admin`}>  <MakeAAdmin/></AdminRoute>
-            <AdminRoute path={`${path}/products`}>  <MangeProducts/></AdminRoute>
+            <Route path={`${path}/manege-orders`}>  
+                <ManageAllOrders/>
+            </Route>
+            <Route path={`${path}/add-car`}>
+                <AddACar/>
+            </Route>
+            <Route path={`${path}/make-admin`}>  
+                <MakeAAdmin/>
+            </Route>
+            <Route path={`${path}/products`}>  
+                <MangeProducts/>
+            </Route>
           </Switch> 
 
        {/* Declare the react router for nesting */}

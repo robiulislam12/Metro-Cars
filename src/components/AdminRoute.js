@@ -10,6 +10,7 @@ export default function AdminRoute({children, ...rest}) {
                 <CircularProgress color="success" />
             </div>
     }
+    
     return (
         <Route
         {...rest}
