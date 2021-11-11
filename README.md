@@ -24,3 +24,8 @@
 - General user and Admin two different role
 - Admin adn user base routing
 - Private Route for buying
+
+## Default admin and password
+
+- user : admin@admin.com
+- pass: 123456
