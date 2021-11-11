@@ -9,6 +9,7 @@ import AddACar from './AddACar';
 import DashboardHome from './DashboardHome';
 import MakeAAdmin from './MakeAAdmin';
 import ManageAllOrders from './ManageAllOrders';
+import MangeProducts from './MangeProducts';
 import MyOrders from './MyOrders';
 import PayNow from './PayNow';
 import Review from './Review';
@@ -177,6 +178,7 @@ export default function DashBoard(props) {
             </AdminRoute>
             <AdminRoute path={`${path}/add-car`}>  <AddACar/></AdminRoute>
             <AdminRoute path={`${path}/make-admin`}>  <MakeAAdmin/></AdminRoute>
+            <AdminRoute path={`${path}/products`}>  <MangeProducts/></AdminRoute>
           </Switch> 
 
        {/* Declare the react router for nesting */}
