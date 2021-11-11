@@ -13,7 +13,7 @@ import useAuth from '../../../hooks/useAuth';
 export default function MyOrders() {
     const [orders, setOrders] = useState([]);
     const {user} = useAuth()
-
+    
     useEffect(()=>{
         const url = `https://metro-car.herokuapp.com/user/order/${user?.email}`;
         axios.get(url)
@@ -32,7 +32,7 @@ export default function MyOrders() {
                 axios.delete(`https://metro-car.herokuapp.com/orders/${id}`)
                 .then(res => {
                     if(res.data.deletedCount > 0){
-                        alert('Delivered Successful')
+                        alert('Delete Successful')
                     }
                 })
             }

@@ -19,7 +19,28 @@ export default function ManageAllOrders() {
         .then(res =>{
             setOrders(res.data)
         })
-    }, [])
+    }, [orders])
+
+    //delete Order
+    const handleDelivery = (id)=>{
+
+        if(id){
+            const isAgree =  prompt('Is is delivered? Type "yes"')
+            if(isAgree === 'yes'){
+                axios.delete(`https://metro-car.herokuapp.com/orders/${id}`)
+                .then(res => {
+                    if(res.data.deletedCount > 0){
+                        alert('Delivered Successful')
+                    }
+                })
+            }
+            else{
+                return
+            }
+        }
+        
+    }
+    
     return (
         <div>
             <h1>All Orders Here</h1>
@@ -51,7 +72,8 @@ export default function ManageAllOrders() {
                             <img src={order.car_img} alt="" style={{width: '50px'}} />
                         </TableCell>
                         <TableCell>
-                            <Button variant='contained'>Pending</Button>
+                            <Button variant='inherit'>Pending</Button>
+                            <Button variant='contained' color='error' style={{marginLeft: '10px'}} onClick={()=>handleDelivery(order._id)}>Delivered</Button>
                         </TableCell>
                     </TableRow>
                 ))}
